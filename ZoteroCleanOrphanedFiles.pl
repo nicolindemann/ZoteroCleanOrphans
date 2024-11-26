@@ -4,7 +4,7 @@ use DBI;
 use File::Path;
 
 # Update this to match your data directory
-my $zoterostorage="/Users/mronkko/Documents/Research/Zotero";
+my $zoterostorage="/Users/nicolindemann/Zotero";
 my $zoterostoragefiles="$zoterostorage/storage";
 my $dbh = DBI->connect("dbi:SQLite:dbname=$zoterostorage/zotero.sqlite","","");
 
@@ -34,5 +34,5 @@ while (@data = $sth->fetchrow_array()) {
 foreach (@files){
 	print "Deleting orphaned directory $_ \n";
 	# Uncomment the following line to actually delete things (Remove the # character from the beginning of the line)
-	# rmtree(["$zoterostoragefiles/$_"]);
+	rmtree(["$zoterostoragefiles/$_"]);
 }
